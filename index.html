@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayesha Gurriya ❤️</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ min-height:100vh;
+ display:grid;place-items:center;
+ padding:20px;
+ font-family:Georgia,serif;
+ color:#963b60;
+ background:linear-gradient(135deg,#ffe1ed,#f5b9d1,#fff0f5);
+ overflow-x:hidden;
+}
+.card{
+ width:100%;max-width:520px;
+ padding:35px 23px;text-align:center;
+ background:#ffffffd9;
+ border:1px solid white;border-radius:28px;
+ box-shadow:0 15px 50px #a83c6540;
+ position:relative;z-index:2;
+}
+h1{font-size:32px;color:#c03870;margin:15px 0}
+h2{margin:20px 0}
+p{line-height:1.8;margin:15px 0}
+.heart{font-size:60px;animation:beat 1.3s infinite}
+button{
+ border:0;border-radius:30px;padding:14px 25px;
+ margin:10px;background:#d83d7b;color:white;
+ font-size:16px;cursor:pointer;
+}
+button:hover{background:#a92560}
+input{
+ width:85px;padding:15px;border-radius:15px;
+ border:2px solid #e9a0bc;text-align:center;
+ font-size:22px;color:#a52c62;background:white;
+}
+input:focus{outline:2px solid #d83d7b}
+.screen{display:none}
+.screen.active{display:block;animation:show .6s}
+.rose{font-size:30px;margin:15px}
+.feedback{min-height:35px;color:#c03870;font-weight:bold}
+.answers{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.hidden{display:none!important}
+@keyframes beat{50%{transform:scale(1.18)}}
+@keyframes show{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.petal{position:fixed;top:-30px;z-index:1;animation:fall 7s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+<!-- WELCOME -->
+<div class="screen active" id="welcome">
+<div class="heart">💗</div>
+<div class="rose">🌹 🌷 🌸</div>
+<h1>Ayesha Gurriya</h1>
+<h2>A Little Secret Challenge 💌</h2>
+<p>I have 3 cute little questions for you.<br>
+Are you ready to unlock your surprise?</p>
+<button onclick="showScreen('q1')">Let's Begin ❤️</button>
+</div>
+
+<!-- QUESTION 1 -->
+<div class="screen" id="q1">
+<div class="heart">🌸</div>
+<p>QUESTION 01 / 03</p>
+<h2>Which number opens the first little secret of this surprise?</h2>
+<p>Choose your secret number 💗</p>
+<div class="answers">
+<button onclick="check(1,1)">1</button>
+<button onclick="check(1,2)">2</button>
+<button onclick="check(1,3)">3</button>
+</div>
+<div class="feedback" id="f1"></div>
+</div>
+
+<!-- QUESTION 2 -->
+<div class="screen" id="q2">
+<div class="heart">💕</div>
+<p>QUESTION 02 / 03</p>
+<h2>How many little stars are waiting in the second chapter of this secret?</h2>
+<p>Think carefully, Gurriya! ✨</p>
+<div class="answers">
+<button onclick="check(2,2)">2</button>
+<button onclick="check(2,4)">4</button>
+<button onclick="check(2,6)">6</button>
+</div>
+<div class="feedback" id="f2"></div>
+</div>
+
+<!-- QUESTION 3 -->
+<div class="screen" id="q3">
+<div class="heart">🌷</div>
+<p>QUESTION 03 / 03</p>
+<h2>Which number completes the final piece of this little puzzle?</h2>
+<p>One last question! 🥹</p>
+<div class="answers">
+<button onclick="check(3,1)">1</button>
+<button onclick="check(3,2)">2</button>
+<button onclick="check(3,3)">3</button>
+</div>
+<div class="feedback" id="f3"></div>
+</div>
+
+<!-- FINAL COMBINED QUESTION -->
+<div class="screen" id="finalQuiz">
+<div class="heart">💌</div>
+<h1>The Final Challenge!</h1>
+<p>You solved all three questions! Now enter all three secret numbers together, in the correct order.</p>
+
+<div class="answers">
+<input id="a1" type="number" placeholder="?" min="0">
+<input id="a2" type="number" placeholder="?" min="0">
+<input id="a3" type="number" placeholder="?" min="0">
+</div>
+
+<p class="feedback" id="finalFeedback"></p>
+<button onclick="checkFinal()">Unlock My Surprise ❤️</button>
+</div>
+
+<!-- REVEAL -->
+<div class="screen" id="reveal">
+<div class="heart">💖</div>
+<div class="rose">🌹 🌸 🌷</div>
+<h1>You Did It!</h1>
+<h2>Ayesha Gurriya ❤️</h2>
+<p>Your three secret answers are:</p>
+<h1 style="font-size:48px;letter-spacing:12px">1 — 4 — 3</h1>
+<p>Three little questions, three little answers, and one special surprise just for you. 🥹</p>
+<button onclick="showScreen('message')">See My Special Message 💌</button>
+</div>
+
+<!-- MESSAGE -->
+<div class="screen" id="message">
+<div class="heart">❤️</div>
+<h1>For You, Ayesha</h1>
+<p>
+Tumhari khushi aur tumhari feelings mere liye important hain.
+Agar kabhi mujhse galti hui hai, toh I'm genuinely sorry.
+</p>
+<p>
+Main chahta hoon ke hum ek doosre ko samjhein,
+ek doosre ki respect karein aur hamesha achi baat karein.
+</p>
+<h2>You Deserve Happiness 🌷</h2>
+<div class="rose">🌹 💗 🌹</div>
+<p>Made with a sincere apology.</p>
+</div>
+
+</div>
+
+<script>
+const correct={1:1,2:4,3:3};
+const done={1:false,2:false,3:false};
+
+function showScreen(id){
+ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ window.scrollTo(0,0);
+}
+
+function check(question,answer){
+ const feedback=document.getElementById("f"+question);
+
+ if(answer===correct[question]){
+  done[question]=true;
+  feedback.innerText="Correct! Awww, well done! ❤️";
+  setTimeout(()=>{
+   if(question===1)showScreen("q2");
+   if(question===2)showScreen("q3");
+   if(question===3)showScreen("finalQuiz");
+  },1000);
+ }else{
+  feedback.innerText="Oops! Try again, Gurriya! 🥹💕";
+ }
+}
+
+function checkFinal(){
+ const a=Number(document.getElementById("a1").value);
+ const b=Number(document.getElementById("a2").value);
+ const c=Number(document.getElementById("a3").value);
+ const feedback=document.getElementById("finalFeedback");
+
+ if(a===1&&b===4&&c===3){
+  feedback.innerText="All answers are correct! 💖";
+  setTimeout(()=>{
+   showScreen("reveal");
+   celebration();
+  },800);
+ }else{
+  feedback.innerText="Not quite! Try the three answers again 🌸";
+ }
+}
+
+function celebration(){
+ for(let i=0;i<35;i++){
+  const p=document.createElement("div");
+  p.className="petal";
+  p.innerText=["🌸","💕","🌹","💗"][Math.floor(Math.random()*4)];
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=(4+Math.random()*5)+"s";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),10000);
+ }
+}
+
+setInterval(()=>{
+ const p=document.createElement("div");
+ p.className="petal";
+ p.innerText=["🌸","💗","🌷"][Math.floor(Math.random()*3)];
+ p.style.left=Math.random()*100+"vw";
+ p.style.animationDuration="7s";
+ document.body.appendChild(p);
+ setTimeout(()=>p.remove(),7000);
+},1000);
+</script>
+
+</body>
+</html>
